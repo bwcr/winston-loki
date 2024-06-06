@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Barangkulakan owned backend logger transport cloned and improved from winston-loki",
   "main": "index.js",
-  "private": true,
   "keywords": [
     "winston",
     "loki",
