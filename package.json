@@ -48,5 +48,14 @@
       "email": "bayu.wicaksono@barangkulakan.com"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Barangkulakan-com/bakul_winston_loki.git"
+  },
+  "author": "Bayu Wicaksono",
+  "bugs": {
+    "url": "https://github.com/Barangkulakan-com/bakul_winston_loki/issues"
+  },
+  "homepage": "https://github.com/Barangkulakan-com/bakul_winston_loki#readme"
 }
