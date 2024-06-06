@@ -26,7 +26,7 @@ class Batcher {
     this.options = options
 
     // Construct Grafana Loki push API url
-    this.url = new url.URL(this.options.host + '/api/prom/push').toString()
+    this.url = new url.URL(this.options.host + '/loki/api/v1/push').toString()
 
     // Define the batching intervals
     this.interval = this.options.interval
