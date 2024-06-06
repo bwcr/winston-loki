@@ -1,7 +1,7 @@
 {
   "name": "@bwcr_/winston-loki",
   "version": "1.0.0",
-  "description": "Barangkulakan owned backend logger transport cloned and improved from winston-loki",
+  "description": "A winston transport for Grafana Loki cloned and modified from winston-loki to support Loki v2.0.0",
   "main": "index.js",
   "keywords": [
     "winston",
