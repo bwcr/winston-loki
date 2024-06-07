@@ -89,10 +89,12 @@ class Batcher {
    */
   async pushLogEntry (logEntry) {
     const noTimestamp =
-      logEntry && logEntry.entries && logEntry.entries[0].ts === undefined
+      // logEntry && logEntry.entries && logEntry.entries[0].ts === undefined
+      logEntry && logEntry.values && logEntry.values[0][0] === undefined
     // If user has decided to replace the given timestamps with a generated one, generate it
     if (this.options.replaceTimestamp || noTimestamp) {
-      logEntry.entries[0].ts = Date.now()
+      // logEntry.entries[0].ts = Date.now()
+      logEntry.values[0][0] = Date.now().toString() + '000000'
     }
 
     // If protobuf is the used data type, construct the timestamps
@@ -108,13 +110,17 @@ class Batcher {
 
       // Find if there's already a log with identical labels in the batch
       const match = streams.findIndex(
-        stream => stream.labels === logEntry.labels
+        // stream => stream.labels === logEntry.labels
+        stream => stream.stream === logEntry.stream
       )
 
       if (match > -1) {
         // If there's a match, push the log under the same label
-        logEntry.entries.forEach(entry => {
-          streams[match].entries.push(entry)
+        // logEntry.entries.forEach(entry => {
+        //   streams[match].entries.push(entry)
+        // })
+        logEntry.values.forEach(entry => {
+          streams[match].values.push(entry)
         })
       } else {
         // Otherwise, create a new label under streams

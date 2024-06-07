@@ -54,18 +54,17 @@ class LokiTransport extends Transport {
     // build custom labels if provided
     let lokiLabels
     if (this.labels) {
-      lokiLabels = `{level="${level}"`
+      lokiLabels = { level: level }
       for (let key in this.labels) {
-        lokiLabels += `,${key}="${this.labels[key]}"`
+        lokiLabels[key] = this.labels[key]
       }
       if (labels) {
         for (let key in labels) {
-          lokiLabels += `,${key}="${labels[key]}"`
+          lokiLabels[key] = labels[key]
         }
       }
-      lokiLabels += '}'
     } else {
-      lokiLabels = `{job="${label}", level="${level}"}`
+      lokiLabels = { job: label, level: level }
     }
 
     // follow the format provided
@@ -75,19 +74,15 @@ class LokiTransport extends Transport {
 
     // Construct the log to fit Grafana Loki's accepted format
     const logEntry = {
-      labels: lokiLabels,
-      entries: [
-        {
-          ts: timestamp || Date.now(),
-          line
-        }
+      stream: lokiLabels,
+      values: [
+        [timestamp || Date.now().toString() + '000000', line]
       ]
     }
-
     // Pushes the log to the batcher
     this.batcher.pushLogEntry(logEntry)
 
-    // Trigger the optional callback
+    // Trigger the optional callback`
     callback()
   }
 
