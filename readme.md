@@ -7,7 +7,7 @@ This is a modified version of [winston-loki@^5](https://github.com/JaniAnttonen/
 
 ## Installation
 
-Use the package manager [npm](https://www.npmjs.com/) to install your-module-name.
+Use the package manager [npm](https://www.npmjs.com/) to install @bwcr_/winston-loki.
 
 ```bash
 npm install @bwcr_/winston-loki
